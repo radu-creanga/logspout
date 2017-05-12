@@ -223,8 +223,8 @@ func (p *LogsPump) pumpLogs(event *docker.APIEvents, backlog bool, inactivityTim
 				Stdout:            true,
 				Stderr:            true,
 				Follow:            true,
-				Tail:              "all",
 				Since:             sinceTime.Unix(),
+				RawTerminal:       container.Config.Tty,
 				InactivityTimeout: inactivityTimeout,
 			})
 			if err != nil {
